@@ -11,7 +11,7 @@
         <div class="flex justify-center items-center">
             <ProductDesc :product="props.product"/>
         </div>
-        <div class="flex justify-between items-center">
+        <div>
             <ProductPrice :product="props.product"/>
         </div>
     </Box>

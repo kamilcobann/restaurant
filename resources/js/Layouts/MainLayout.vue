@@ -1,46 +1,89 @@
 <template>
-<header class="border-b border-gray-200 bg-white w-full">
-  <div class="container mx-auto">
-    <nav class="p-4 flex items-center justify-center">
-      <div class="text-lg">
-        <Link href="/product">Products</Link>
-      </div>
-    </nav>
-  </div>
-</header>
-<main class="container mx-auto p-4 w-full">
-  <!-- <div v-if="flashSuccess" class="mb-4 border rounded-md shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900 p-2">
-            {{ flashSuccess }}
-  </div> -->
-  <slot>
-    Default
-  </slot>
-</main>
+  <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+            <span class="absolute -inset-0.5" />
+            <span class="sr-only">Open main menu</span>
+            <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
+            <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
+          </DisclosureButton>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <Link :href="route('homepage')" class="text-white">
+              LOGO
+            <!-- BURAYA LOGO GELECEK -->
+            </Link>
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <span class="absolute -inset-1.5" />
+            <span class="sr-only">View notifications</span>
+            <BellIcon class="h-6 w-6" aria-hidden="true" />
+          </button>
 
-<footer>
-  <div class="grid grid-cols-3">
-    <div class="flex justify-center items-center">
-      Location
+          <!-- Profile dropdown -->
+          <Menu as="div" class="relative ml-3">
+            <div>
+              <MenuButton class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <span class="absolute -inset-1.5" />
+                <span class="sr-only">Open user menu</span>
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+              </MenuButton>
+            </div>
+            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+              <MenuItems class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <MenuItem v-slot="{ active }">
+                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Your Profile</a>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Settings</a>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
+                </MenuItem>
+              </MenuItems>
+            </transition>
+          </Menu>
+        </div>
+      </div>
     </div>
-    <div class="flex justify-center items-center">
-      Open Hours
-    </div>
-    <div class="flex justify-center items-center">
-      On Holidays
-    </div>
-  </div>
-  <div class="flex items-center justify-evenly gap-4">
-    <div>Logo</div>
-    <div>Socials</div>
-    <div>Contact Us</div>
-  </div>
-</footer>
+
+    <DisclosurePanel class="sm:hidden">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
+      </div>
+    </DisclosurePanel>
+  </Disclosure>
+
+  <main class="container mx-auto mb-auto p-4 w-full">
+
+<slot>
+  Default
+</slot>
+</main>
+<Footer></Footer>
+
 </template>
 
 <script setup>
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { Link } from '@inertiajs/vue3'
-// import { computed } from 'vue';
-// const flashSuccess = computed(
-//   () => usePage().props.flash.success
-// )
+import Footer from '@/Components/UI/Footer.vue';
+
+const navigation = [
+  { name: 'Anasayfa', href: route('homepage'), /*current: false */ },
+  { name: 'Ürünler', href: route('product.index'), /*current: false */ },
+  { name: 'Yönetici Paneli', href: '#', /*current: false */ }
+]
 </script>
