@@ -13,7 +13,7 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore vitae quam at ipsam cumque. Tenetur quam perspiciatis tempora tempore et laudantium molestias illum sapiente perferendis eius fugiat, expedita placeat similique voluptas ea, sunt, magni laboriosam eveniet voluptate. Laudantium, molestiae dolor?
             </template>
             <template #extra>
-                Icons
+social
             </template>
         </FooterBox>
         <FooterBox>
@@ -50,9 +50,7 @@
 
             </template>
             <template #extra>
-                <button class="border border-white rounded-none px-5 py-3 hover:bg-gray-600">
-                    Rezervasyon Yapın
-                </button>
+                <a href="tel:+90-541-334-4541" as="button" class="border border-white rounded-none px-5 py-3 hover:bg-gray-600"> Rezervasyon Yapın </a>
             </template>
         </FooterBox>
         
@@ -60,8 +58,8 @@
         <div class=" bg-slate-900">
             <div class="">&nbsp;</div>
             <div class="text-gray-900 flex justify-between items-center">
-                <div class="ms-20 text-gray-100">Steakhouse</div>
-                <div class="me-20 text-gray-100">Steakhouse</div>
+                <div class="ms-20 text-gray-100">Shish&Go Steakhouse</div>
+                <div class="me-20 text-gray-100">Uşak/Merkez</div>
             </div>
             <div class="">&nbsp;</div>
         </div>
@@ -73,4 +71,6 @@
 // import Box from './Box.vue';
 import FooterBox from '@/Components/UI/Footer/FooterBox.vue';
 import { Link } from '@inertiajs/vue3';
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 </script>

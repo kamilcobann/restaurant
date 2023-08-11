@@ -1,5 +1,6 @@
 <template>
-  <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
+  <Disclosure as="nav" class="bg-gray-800 sticky top-0" v-slot="{ open }">
+    
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -65,7 +66,7 @@
     </DisclosurePanel>
   </Disclosure>
 
-  <main class="container mx-auto mb-auto p-4 w-full">
+  <main class="mx-auto mb-auto w-full">
 
 <slot>
   Default
