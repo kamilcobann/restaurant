@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // dd($request->user);
         return inertia(
             'Front/Products/Index',
             [

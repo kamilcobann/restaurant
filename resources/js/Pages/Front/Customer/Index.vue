@@ -12,6 +12,6 @@ import FoodSlider from '@/Components/FoodSlider.vue';
 import Comment from '@/Components/Comment.vue';
 import WelcomeCard from '@/Components/WelcomeCard.vue';
 defineProps({
-    products: Array
+    products: Array,
 })
 </script>

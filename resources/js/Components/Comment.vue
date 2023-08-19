@@ -1,6 +1,6 @@
 <template>
     <div
-     class="flex justify-center items-center font-bold text-lg lg:text-3xl "
+     class="flex justify-center items-center font-bold text-lg lg:text-3xl mt-2 mb-2"
      >
         Müşterilerimiz neler söylüyor?
     </div>
@@ -22,9 +22,9 @@
 
 
 
-    <div class=" rounded-lg">
+    <div class="bg-gray-400 bg-opacity-20 mt-2 rounded-lg">
         <div class="flex p-2">
-            <div class="snap-x snap-mandatory overflow-x-scroll no-scrollbar scroll whitespace-nowrap scroll-smooth flex flex-row">
+            <div class="snap-x snap-mandatory overflow-x-scroll no-scrollbar scroll flex-nowrap scroll-smooth flex flex-row">
                 <CommentCard v-for="comment in commentList" :key="comment.id" :comment="comment"/>
             </div>
         </div>
@@ -33,5 +33,19 @@
 
 <script setup>
 import CommentCard from '@/Components/CommentCard.vue'
+import axios from "axios";
+import { ref, onMounted} from 'vue'
+
+const commentList = ref([])
+const getCommentList = () => {
+    axios.get(route('comments')).then(response => {
+        commentList.value = response.data.dummy_data
+    });
+}
+
+onMounted(
+    ()=>getCommentList()
+);
+
 
 </script>
