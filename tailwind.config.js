@@ -6,7 +6,11 @@ export default {
     './resources/js/**/*.vue',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        'main-asset': "url(https://media-cdn.tripadvisor.com/media/photo-s/1d/7b/d7/d7/sisko-restoran.jpg)"
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/forms')
