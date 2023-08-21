@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->tinyText('title');
             $table->tinyText('description');
-            $table->unsignedSmallInteger('portion_price');
-            $table->unsignedSmallInteger('kilogram_price');
+            $table->double('portion_price');
+            $table->double('kilogram_price');
+            // $table->bigInteger('category_id')->unsigned()->default(0);
+
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -25,7 +28,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            $table->dropColumn('title');
+            $table->dropColumn('description');
+            $table->dropColumn('portion_price');
+            $table->dropColumn('kilogram_price');
+            // $table->dropColumn('category_id');
         });
     }
 };

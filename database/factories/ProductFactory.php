@@ -20,7 +20,7 @@ class ProductFactory extends Factory
             'title' => fake()->city(),
             'description' => fake()->streetName(),
             'portion_price' => fake()->numberBetween(100,500),
-            'kilogram_price'=>fake()->numberBetween(1000,5000)
+            'kilogram_price'=>fake()->numberBetween(1000,5000),
         ];
     }
 }

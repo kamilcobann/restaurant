@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,12 +11,13 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        // dd($request->user);
+        // dd(Auth::user());
         return inertia(
             'Front/Products/Index',
             [
                 'message' => 'This is Index.vue',
                 'products' => Product::all(),
+                // 'user' => Auth::user(),
             ]
         );
     }   
@@ -43,7 +45,14 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        Product::create($request->validate([
+            'title' => 'required|string|min:1|max:120',
+            'description' => 'required|string|min:1',
+            'portion_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+            'kilogram_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+        ]));
 
+        return redirect()->route('product.index')->with('success','Ürün başarıyla oluşturuldu');
     }
 
     public function edit(Product $product)
@@ -57,9 +66,17 @@ class ProductController extends Controller
         );
     }
 
-    public function update()
+    public function update(Request $request, Product $product)
     {
-        
+        $product->update(
+            $request->validate([
+                'title' => 'required|string|min:1|max:120',
+                'description' => 'required|string|min:1',
+                'portion_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+                'kilogram_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/'
+            ])
+        );
+        return redirect()->route('product.index')->with('success','Ürün başarıyla güncellendi');
     }
 
     public function destroy(Product $product)
