@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-4">
     <!-- <FoodSlider :product-list="products"/> -->
     <MenuItem v-for="product in products" :key="product.id" :product="product"/>
   </div>

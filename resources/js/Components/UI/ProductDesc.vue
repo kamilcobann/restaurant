@@ -1,6 +1,6 @@
 <template>
     <span>
-        <Link :href="route('product.edit',$props.product.id)">
+        <Link :href="route('product.show',$props.product.id)">
             {{ props.product.description }}
         </Link>
     </span>
