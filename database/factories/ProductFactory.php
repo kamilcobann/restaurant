@@ -18,9 +18,10 @@ class ProductFactory extends Factory
     {
         return [
             'title' => fake()->city(),
-            'description' => fake()->streetName(),
+            'description' => fake()->paragraph(),
             'portion_price' => fake()->numberBetween(100,500),
             'kilogram_price'=>fake()->numberBetween(1000,5000),
+            'category' => fake()->numberBetween(1,5)
         ];
     }
 }

@@ -1,15 +1,31 @@
 <template>
-                <tr class="border rounded-lg border-slate-600 ">
-                    <td class="py-2 rounded-tl-lg rounded-bl-lg text-center text-gray-500 ">{{ product.id }}</td>
-                    <td class="py-2 text-center ">{{ product.title }}</td>
-                    <td class="py-2 text-center">{{ product.kilogram_price }}</td>
-                    <td class="py-2 text-center">{{ product.portion_price }}</td>
-                    <td class="rounded-tr-lg rounded-br-lg text-center">CRUD</td>
+                <tr class="border rounded-lg border-slate-600 bg-gray-300 hover:bg-gray-200">
+                    <td class="py-2 rounded-tl-lg rounded-bl-lg text-center ">
+                        <Link class="block"  :href="route('admin.product.show', $props.product.id)">{{ product.id }}</Link>
+                    </td>
+                    <td class="py-2 text-center ">
+                        <Link class="block" :href="route('admin.product.show', $props.product.id)">{{ product.title }}</Link>
+                    </td>
+                    <td class="py-2 text-center">
+                        <Link class="block" :href="route('admin.product.show', $props.product.id)">{{ product.kilogram_price }}</Link>
+                    </td>
+                    <td class="py-2 text-center">
+                        <Link class="block" :href="route('admin.product.show', $props.product.id)">{{ product.portion_price }}</Link>
+                    </td>
+                    <td class="rounded-tr-lg rounded-br-lg text-center flex justify-center items-center gap-2 my-2">
+                        <Link :href="route('admin.product.show', $props.product.id)" as="button"><EyeIcon class="h-5"/></Link>
+                        <Link :href="route('admin.product.edit', $props.product.id)" as="button"><PencilIcon class="h-5"/></Link>
+                        <Link :href="route('admin.product.destroy', $props.product.id)" method="delete" as="button"><TrashIcon class="h-5"/></Link>
+                    </td>
                 </tr>
+                
+
 </template>
 
 <script setup>
-defineProps({
+import { EyeIcon, PencilIcon, TrashIcon } from '@heroicons/vue/24/outline';
+import { Link } from '@inertiajs/vue3';
+const props = defineProps({
     product: Object
 })
 </script>

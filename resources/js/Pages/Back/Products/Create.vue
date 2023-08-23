@@ -51,5 +51,5 @@ const form = useForm({
   kilogram_price: null
 });
 
-const create = () => form.post(route('product.store'))
+const create = () => form.post(route('admin.product.store'))
 </script>

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->tinyText('description');
             $table->double('portion_price');
             $table->double('kilogram_price');
-            // $table->bigInteger('category_id')->unsigned()->default(0);
+            $table->bigInteger('category')->unsigned()->default(0);
 
-            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->dropColumn('description');
             $table->dropColumn('portion_price');
             $table->dropColumn('kilogram_price');
-            // $table->dropColumn('category_id');
+            $table->dropColumn('category');
         });
     }
 };

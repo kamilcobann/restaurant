@@ -20,6 +20,16 @@ class AdminProductController extends Controller
             );
     }
 
+    public function show(Product $product)
+    {
+        return inertia(
+            'Back/Products/Show',
+            [
+                'product' => $product
+            ]
+            );
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -42,7 +52,7 @@ class AdminProductController extends Controller
             'kilogram_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
         ]));
 
-        return redirect()->route('product.index')->with('success','Ürün başarıyla oluşturuldu');
+        return redirect()->route('admin.product.index')->with('success','Ürün başarıyla oluşturuldu');
     
     }
 
@@ -75,7 +85,7 @@ class AdminProductController extends Controller
                 'kilogram_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/'
             ])
         );
-        return redirect()->route('product.index')->with('success','Ürün başarıyla güncellendi');
+        return redirect()->route('admin.product.index')->with('success','Ürün başarıyla güncellendi');
     
     }
 
@@ -86,7 +96,7 @@ class AdminProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->back()->with('success','Product was deleted');
+        return redirect()->back()->with('success','Ürün başarıyla silindi');
     
     }
 }

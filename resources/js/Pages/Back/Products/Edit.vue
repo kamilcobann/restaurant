@@ -51,5 +51,5 @@ const form = useForm({
   kilogram_price: props.product.kilogram_price
 });
 
-const update = () => form.put(route('product.update',{product: props.product.id}))
+const update = () => form.put(route('admin.product.update',{product: props.product.id}))
 </script>

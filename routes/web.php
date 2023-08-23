@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DummyCommentController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\CategoryController;
+
 
 // Route::get('/', [IndexController::class, 'index']);
 // Route::get('/hello', [IndexController::class, 'show']);
@@ -17,5 +19,11 @@ Route::get('login',[AuthController::class,'create'])->name('login');
 Route::post('login',[AuthController::class,'store'])->name('login.store');
 Route::delete('logout',[AuthController::class,'destroy'])->name('logout');
 Route::resource('user-account', UserAccountController::class)->only(['create','store']);
-Route::resource('admin-product', AdminProductController::class)->except('show')->middleware('auth');
 Route::get('comments',[DummyCommentController::class,'getComments'])->name('comments');
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(
+    function(){
+        Route::resource('product', AdminProductController::class);
+        Route::resource('category', CategoryController::class);
+    }
+);
