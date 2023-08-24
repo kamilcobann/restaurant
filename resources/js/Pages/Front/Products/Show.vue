@@ -53,7 +53,7 @@ defineProps({ message: String})
       </nav>
 
       <!-- Image gallery -->
-      <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+      <!-- <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
         <div class="aspect-h-3 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
           <img :src="product.images[0].src" :alt="product.images[0].alt" class="h-full w-full object-cover object-center" />
         </div>
@@ -68,8 +68,12 @@ defineProps({ message: String})
         <div class="aspect-h-3 aspect-w-3 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
           <img :src="product.images[3].src" :alt="product.images[3].alt" class="h-full w-full object-cover object-center" />
         </div>
+      </div> -->
+      <div class="snap-x snap-mandatory overflow-x-scroll no-scrollbar scroll whitespace-nowrap scroll-smooth flex flex-row no-scrollbar mx-auto w-full md:w-1/2">
+        <div class="snap-center" v-for="image in product.images" :key="image">
+          <img :src="image.src" :alt="image.alt"   class="shadow-md rounded-md mx-4 h-80 max-w-fit" />
+        </div>
       </div>
-
       <!-- Product info -->
       <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
         <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
@@ -100,6 +104,8 @@ defineProps({ message: String})
 </template>
 
 <script setup>
+import FoodSlider from '@/Components/FoodSlider.vue';
+
 
 const props  = defineProps({ message: String , product: Object})
 
@@ -114,23 +120,24 @@ const product = {
   ],
   images: [
     {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
+      src: 'https://picsum.photos/300/300?random=1',
       alt: 'Two each of gray, white, and black shirts laying flat.',
     },
     {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg',
+      src: 'https://picsum.photos/300/600?random=1',
       alt: 'Model wearing plain black basic tee.',
     },
     {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg',
+      src: 'https://picsum.photos/600/300?random=1',
       alt: 'Model wearing plain gray basic tee.',
     },
     {
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg',
+      src: 'https://picsum.photos/300/300?random=1',
       alt: 'Model wearing plain white basic tee.',
     },
   ],
 
   description: props.product.description,
 }
+
 </script>

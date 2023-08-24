@@ -9,10 +9,8 @@ use App\Http\Controllers\DummyCommentController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CategoryController;
+use App\Models\Product;
 
-
-// Route::get('/', [IndexController::class, 'index']);
-// Route::get('/hello', [IndexController::class, 'show']);
 Route::get('/',[SurfPageController::class,'index'])->name('homepage');
 Route::resource('product', ProductController::class)->only(['index', 'show']);
 Route::get('login',[AuthController::class,'create'])->name('login');
@@ -24,6 +22,7 @@ Route::get('comments',[DummyCommentController::class,'getComments'])->name('comm
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(
     function(){
         Route::resource('product', AdminProductController::class);
+        Route::put('/product/{product}/restore', [AdminProductController::class,'restore'])->name('product.restore')->withTrashed();
         Route::resource('category', CategoryController::class);
     }
 );

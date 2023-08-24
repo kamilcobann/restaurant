@@ -15,7 +15,7 @@ class AdminProductController extends Controller
         return inertia(
             'Back/Products/Index',
             [
-                'products' => Product::all()
+                'products' => Product::withTrashed()->get()
             ]
             );
     }
@@ -94,9 +94,15 @@ class AdminProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
+        $product->deleteOrFail();
 
         return redirect()->back()->with('success','Ürün başarıyla silindi');
     
     }
+
+    public function restore(Product $product)
+    {
+        $product->restore();
+        return redirect()->back()->with('success','Ürün listeye geri eklendi');
+}
 }

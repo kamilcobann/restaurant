@@ -2,15 +2,15 @@
     <Box>
         <Link :href="route('product.show',{product: product.id})">
         <div class="flex justify-center items-center">
-            <img src="https://picsum.photos/300/300?random=1">
+            <img src="https://picsum.photos/300/300?random=1" class="object-cover h-48 w-96">
         </div>
         </Link>
         <div class="flex justify-center items-center">
             <ProductTitle :product="props.product"/>
         </div>
-        <div class="flex justify-center items-center">
+        <!-- <div class="flex justify-center items-center">
             <ProductDesc :product="props.product"/>
-        </div>
+        </div> -->
         <div>
             <ProductPrice :product="props.product"/>
         </div>
