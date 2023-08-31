@@ -5,7 +5,7 @@
         <hr class="opacity-30">
         <div class="flex p-2">
 
-            <div class="snap-x snap-mandatory overflow-x-scroll no-scrollbar scroll whitespace-nowrap scroll-smooth flex flex-row no-scrollbar">
+            <div class=" snap-x snap-mandatory overflow-x-scroll no-scrollbar scroll whitespace-nowrap scroll-smooth flex flex-row no-scrollbar mx-auto w-full ">
                 <FoodCard v-for="product in productList" :key="product.id" :product="product" :isHome="isHome"/>                
             </div>
 

@@ -116,26 +116,9 @@ const product = {
   href: '#',
   breadcrumbs: [
     { id: 1, name: 'Menü', href: route('product.index') },
-    { id: 2, name: props.product.category, href:'#'}
+    { id: 2, name: props.product.category.name, href:"/product?category=".concat(props.product.category.id)}
   ],
-  images: [
-    {
-      src: 'https://picsum.photos/300/300?random=1',
-      alt: 'Two each of gray, white, and black shirts laying flat.',
-    },
-    {
-      src: 'https://picsum.photos/300/600?random=1',
-      alt: 'Model wearing plain black basic tee.',
-    },
-    {
-      src: 'https://picsum.photos/600/300?random=1',
-      alt: 'Model wearing plain gray basic tee.',
-    },
-    {
-      src: 'https://picsum.photos/300/300?random=1',
-      alt: 'Model wearing plain white basic tee.',
-    },
-  ],
+  images: props.product.images,
 
   description: props.product.description,
 }

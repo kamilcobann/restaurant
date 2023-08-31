@@ -13,9 +13,9 @@
             </div>
             <div class="mt-4">
                 <button class="button-primary w-full" type="submit">Giriş Yap</button>
-                <div class="mt-2 text-center">
+                <div v-if="!count" class="mt-2 text-center">
                      <Link :href="route('user-account.create')" class="text-sm text-gray-500 hover:text-gray-200">
-                        Hesap Oluştur    
+                        Hesap Oluştur   
                     </Link>
                 </div>
             </div>
@@ -25,7 +25,9 @@
 
 <script setup>
 import { useForm,Link } from '@inertiajs/vue3';
-
+defineProps({
+    count:Number
+})
 const form = useForm({
     email: null,
     password: null

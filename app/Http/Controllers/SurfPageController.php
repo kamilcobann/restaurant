@@ -16,17 +16,10 @@ class SurfPageController extends Controller
         return inertia(
             'Front/Customer/Index',
             [
-                'products' => Product::all(),
+                'products' => Product::with('firstImage')->get(),
             ]
         );
     }
 
-    public function hello()
-    {
-
-        return inertia(
-            'Front/Pages/Customer/Index'
-        );
-    }
 
 }

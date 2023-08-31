@@ -11,19 +11,27 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        // dd(Auth::user());
+        $filters = $request->only([
+            'category'
+        ]);
+        
         return inertia(
             'Front/Products/Index',
             [
-                'message' => 'This is Index.vue',
-                'products' => Product::all(),
-                // 'user' => Auth::user(),
+                'filters' => $filters,
+                'categories' => Category::all(),
+                'products' => Product::mostRecent()
+                ->with(['firstImage'])
+                ->filters($filters)
+                ->paginate(9)
+                ->withQueryString()
             ]
         );
     }   
     
     public function show(Product $product)
     {
+        $product->load(['images','category']);
         return inertia(
             'Front/Products/Show',
             [

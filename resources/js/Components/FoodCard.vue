@@ -1,6 +1,6 @@
 <template>
-    <div id="card" class="snap-center text-center rounded-xl my-10 ml-5">
-        <img src="https://picsum.photos/300/300?random=1" class="shadow-md rounded-md mx-auto max-w-fit">
+    <div id="card" class="snap-center text-center rounded-xl my-10">
+        <img :src="props.product.first_image.src" class="shadow-md rounded-md mx-4 h-40 object-fit max-w-fit">
         <div class="my-3">
             <div>
                 <ProductTitle :product="product" class="text-gray-300"/>

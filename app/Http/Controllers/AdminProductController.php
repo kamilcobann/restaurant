@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminProductController extends Controller
@@ -10,12 +11,19 @@ class AdminProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
+
+        $filters = $request->only([
+            'category'
+        ]); 
         return inertia(
             'Back/Products/Index',
             [
-                'products' => Product::withTrashed()->get()
+                'filters' => $filters,
+                'categories' => Category::all(),
+                'products' => Product::withTrashed()->filters($filters)->paginate(8)->withQueryString()
             ]
             );
     }

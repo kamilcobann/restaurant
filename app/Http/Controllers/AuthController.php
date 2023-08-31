@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-
+use App\Models\User;
 class AuthController extends Controller
 {
 
@@ -15,9 +15,12 @@ class AuthController extends Controller
      */
     public function create()
     {
-        //
+        $count =  User::count();
         return inertia(
-            'Back/Auth/Login'
+            'Back/Auth/Login',
+            [
+                'count' => $count
+            ]
         );
     }
 

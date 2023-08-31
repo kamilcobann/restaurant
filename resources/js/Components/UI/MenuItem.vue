@@ -2,7 +2,7 @@
     <Box>
         <Link :href="route('product.show',{product: product.id})">
         <div class="flex justify-center items-center">
-            <img src="https://picsum.photos/300/300?random=1" class="object-cover h-48 w-96">
+            <img :src="props.product.first_image.src" class="object-fit h-48 w-96">
         </div>
         </Link>
         <div class="flex justify-center items-center">

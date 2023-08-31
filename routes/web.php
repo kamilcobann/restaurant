@@ -9,6 +9,7 @@ use App\Http\Controllers\DummyCommentController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductImageController;
 use App\Models\Product;
 
 Route::get('/',[SurfPageController::class,'index'])->name('homepage');
@@ -24,5 +25,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(
         Route::resource('product', AdminProductController::class);
         Route::put('/product/{product}/restore', [AdminProductController::class,'restore'])->name('product.restore')->withTrashed();
         Route::resource('category', CategoryController::class);
+        Route::resource('product.image', ProductImageController::class)->only(['create','store','destroy']);
     }
 );
