@@ -18,7 +18,7 @@ return new class extends Migration
             $table->double('kilogram_price');
             $table->bigInteger('category')->unsigned()->default(0);
 
-            $table->foreign('category')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category')->references('id')->on('categories')->constrained()->nullable();
         });
     }
 

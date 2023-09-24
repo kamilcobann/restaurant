@@ -22,9 +22,10 @@ Route::get('comments',[DummyCommentController::class,'getComments'])->name('comm
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(
     function(){
-        Route::resource('product', AdminProductController::class);
+        Route::resource('product', AdminProductController::class)->withTrashed();
         Route::put('/product/{product}/restore', [AdminProductController::class,'restore'])->name('product.restore')->withTrashed();
-        Route::resource('category', CategoryController::class);
+        Route::resource('category', CategoryController::class)->withTrashed();
+        Route::put('/category/{category}/restore', [CategoryController::class,'restore'])->name('category.restore')->withTrashed();
         Route::resource('product.image', ProductImageController::class)->only(['create','store','destroy']);
     }
 );

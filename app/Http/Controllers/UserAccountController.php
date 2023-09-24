@@ -38,7 +38,7 @@ class UserAccountController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:15|unique:users'
         ]));
         Auth::login($user);
-        return redirect()->route('product.index')->with('success','Hesap oluşturuldu');
+        return redirect()->route('admin.product.index')->with('success','Hesap oluşturuldu');
     }
 
     /**

@@ -14,7 +14,7 @@ class Product extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'title','description','portion_price','kilogram_price'
+        'title','description','portion_price','kilogram_price','category'
     ];
 
     public function images():HasMany

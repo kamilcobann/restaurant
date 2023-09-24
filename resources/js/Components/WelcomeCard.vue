@@ -1,6 +1,6 @@
 <template>
-<div class="bg-local bg-cover bg-center bg-main-asset bg-no-repeat h-80 lg:h-96 text-center">
-  <div class="bg-gray-600 bg-opacity-30 h-full w-full ">
+<div class="bg-local bg-cover bg-center bg-main-asset bg-no-repeat h-64 md:h-96  text-center">
+  <div class="bg-gray-600 bg-opacity-50 h-full w-full ">
     <div class="flex items-center justify-center h-full">
       <div class="text-white">
         <h2 class="text-3xl mb-2">Shish&Go Steakhouse</h2>

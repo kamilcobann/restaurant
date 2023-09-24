@@ -1,7 +1,7 @@
 <template>
 <WelcomeCard/>
-<div class="container mx-auto  p-4 ">
-<FoodSlider :isHome="true" :product-list="products"/>
+<div class="container mx-auto my-10 p-4 ">
+<FoodSlider :isHome="true" :product-list="products" class="mb-10"/>
 <Comment/>
 </div>
 

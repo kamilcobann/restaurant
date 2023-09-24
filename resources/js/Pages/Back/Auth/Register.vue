@@ -1,7 +1,8 @@
 <template>
     <form @submit.prevent="register">
-        <div class="w-1/2 mx-auto">
-            <div class="">
+        <div class="w-2/3 md:w-1/4 mx-auto">
+            <div class="text-center text-3xl mt-4">Kayıt Ol</div>
+            <div class="mt-4">
                 <label for="name" class="label">Adınız</label>
                 <input type="text" id="name" class="input" v-model="form.name"/>
             </div>

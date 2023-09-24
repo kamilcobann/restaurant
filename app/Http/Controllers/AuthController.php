@@ -42,7 +42,7 @@ class AuthController extends Controller
         }
 
         $request->session()->regenerate();
-        return redirect()->intended('/product');
+        return redirect()->intended(route('admin.product.index'));
     }
 
     public function destroy(Request $request)
@@ -51,6 +51,6 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('homepage');
+        return redirect()->intended(route('homepage'));
     }
 }

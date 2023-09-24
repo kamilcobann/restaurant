@@ -1,5 +1,5 @@
 <template>
-  <Filters :categories="categories" :filters="filters"/>
+  <Filters :categories="categories" :filters="filters" class="mt-4"/>
   <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mx-auto xl:w-3/4 xl:my-10 p-3">
     <!-- <FoodSlider :product-list="products"/> -->
     <MenuItem v-for="product in products.data" :key="product.id" :product="product"/>

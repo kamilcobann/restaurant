@@ -17,7 +17,7 @@ class AdminProductController extends Controller
 
         $filters = $request->only([
             'category'
-        ]); 
+        ]);
         return inertia(
             'Back/Products/Index',
             [
@@ -44,7 +44,10 @@ class AdminProductController extends Controller
     public function create()
     {
         return inertia(
-            'Back/Products/Create'
+            'Back/Products/Create',
+            [
+                'categories' => Category::all()
+            ]
         );
     }
 
@@ -58,10 +61,11 @@ class AdminProductController extends Controller
             'description' => 'required|string|min:1',
             'portion_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
             'kilogram_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+            'category'=>'required|int'
         ]));
 
         return redirect()->route('admin.product.index')->with('success','Ürün başarıyla oluşturuldu');
-    
+
     }
 
 
@@ -75,7 +79,8 @@ class AdminProductController extends Controller
             'Back/Products/Edit',
             [
                 'message' => 'This is Edit.vue',
-                'product' => $product
+                'product' => $product,
+                'categories' => Category::all()
             ]
         );
     }
@@ -90,11 +95,12 @@ class AdminProductController extends Controller
                 'title' => 'required|string|min:1|max:120',
                 'description' => 'required|string|min:1',
                 'portion_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
-                'kilogram_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/'
+                'kilogram_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+                'category'=>'required|int'
             ])
         );
         return redirect()->route('admin.product.index')->with('success','Ürün başarıyla güncellendi');
-    
+
     }
 
     /**
@@ -105,7 +111,7 @@ class AdminProductController extends Controller
         $product->deleteOrFail();
 
         return redirect()->back()->with('success','Ürün başarıyla silindi');
-    
+
     }
 
     public function restore(Product $product)

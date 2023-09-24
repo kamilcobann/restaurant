@@ -1,10 +1,10 @@
 <template>
-    <div class="flex justify-between items-center dark:text-gray-300">
+    <div class="flex justify-between items-center text-black ">
         <span>
-            {{ props.product.portion_price }} / 1 portion
+            {{ props.product.portion_price }}₺ - 1 porsiyon
         </span>
         <span>
-            {{ props.product.kilogram_price }} / 1 kg
+            {{ props.product.kilogram_price }}₺ - 1 Kg
         </span>
     </div>
 </template>

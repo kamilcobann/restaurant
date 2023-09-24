@@ -16,7 +16,8 @@
             Yorumları
             </div>
         </div>
-        <button type="button" class="flex items-center justify-center border bg-blue-400 rounded-lg p-2">Yorum Yapın</button>
+        <!-- <button type="button" class="flex items-center justify-center border bg-blue-400 rounded-lg p-2">Yorum Yapın</button> -->
+        <a target="_blank" href="https://g.page/r/CWpb2SQOLFltEBM/review" class="flex items-center justify-center border bg-blue-400 rounded-lg p-2" as="button">Yorum Yapın</a>
     </div>
 
 
